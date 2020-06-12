@@ -18,6 +18,12 @@ https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbh
 
 ---
 
+>Run the webpage locally
+
+https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb
+
+---
+
 > Just one html navigation
 
 You can build your own
