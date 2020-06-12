@@ -1,5 +1,20 @@
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-169217093-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-169217093-1");
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
     <link rel="shortcut icon"
     href=https://i.loli.net/2020/06/11/jqHydZv8sN9RWDt.png type=image/x-icon>
@@ -355,11 +370,11 @@
           <!-- 添加按钮结束 -->
           <!-- 增加form -->
           <div class="a-wrap add-link" v-show="addShow === gindex">
-            <input v-model="group.add_link" placeholder="链接" />
+            <input v-model="group.add_link" placeholder="link address" />
             <input
               v-model="group.add_desc"
               style="margin-left: 20px;"
-              placeholder="描述"
+              placeholder="description"
             />
             <button class="tianjia-btn" @click="addLink(gindex)">ADD</button>
             <div class="close-add" @click="closeAdd"></div>
@@ -487,8 +502,8 @@
             add_link: "",
             link_list: [
               {
-                link: "https://www.gitmemory.com/",
-                desc: "gitmemory",
+                link: "https://github.com/channg",
+                desc: "channg",
               },
             ],
           },
@@ -500,7 +515,7 @@
           app.list = data;
         }
       });
-      document.getElementById('inputTxt').focus()
+      document.getElementById("inputTxt").focus();
     </script>
   </body>
 </html>
