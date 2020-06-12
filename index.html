@@ -1,0 +1,498 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+    <link rel="shortcut icon"
+    href=https://i.loli.net/2020/06/11/jqHydZv8sN9RWDt.png type=image/x-icon>
+    <link rel=icon href=https://i.loli.net/2020/06/11/jqHydZv8sN9RWDt.png
+    type=image/gif>
+
+    <title>Your navigation</title>
+    <style>
+      body,
+      ul,
+      ol,
+      li,
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      form,
+      fieldset,
+      table,
+      td,
+      img,
+      div {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+      body {
+        background: #fff;
+        color: #333;
+        font-size: 12px;
+        margin-top: 5px;
+        font-family: "SimSun", "宋体", "Arial Narrow";
+      }
+
+      ul,
+      ol {
+        list-style-type: none;
+      }
+      select,
+      input,
+      img,
+      select {
+        vertical-align: middle;
+      }
+
+      a {
+        text-decoration: none;
+      }
+      a:link {
+        color: #009;
+      }
+      a:visited {
+        color: #800080;
+      }
+      a:hover,
+      a:active,
+      a:focus {
+        color: #c00;
+        text-decoration: underline;
+      }
+
+      #fakebox {
+        background: white;
+        cursor: text;
+      }
+    </style>
+    <style>
+      .logo {
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 200px;
+        height: 100px;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNzIiIGhlaWdodD0iOTIiPjxwYXRoIGZpbGw9IiNFQTQzMzUiIGQ9Ik0xMTUuNzUgNDcuMThjMCAxMi43Ny05Ljk5IDIyLjE4LTIyLjI1IDIyLjE4cy0yMi4yNS05LjQxLTIyLjI1LTIyLjE4QzcxLjI1IDM0LjMyIDgxLjI0IDI1IDkzLjUgMjVzMjIuMjUgOS4zMiAyMi4yNSAyMi4xOHptLTkuNzQgMGMwLTcuOTgtNS43OS0xMy40NC0xMi41MS0xMy40NFM4MC45OSAzOS4yIDgwLjk5IDQ3LjE4YzAgNy45IDUuNzkgMTMuNDQgMTIuNTEgMTMuNDRzMTIuNTEtNS41NSAxMi41MS0xMy40NHoiLz48cGF0aCBmaWxsPSIjRkJCQzA1IiBkPSJNMTYzLjc1IDQ3LjE4YzAgMTIuNzctOS45OSAyMi4xOC0yMi4yNSAyMi4xOHMtMjIuMjUtOS40MS0yMi4yNS0yMi4xOGMwLTEyLjg1IDkuOTktMjIuMTggMjIuMjUtMjIuMThzMjIuMjUgOS4zMiAyMi4yNSAyMi4xOHptLTkuNzQgMGMwLTcuOTgtNS43OS0xMy40NC0xMi41MS0xMy40NHMtMTIuNTEgNS40Ni0xMi41MSAxMy40NGMwIDcuOSA1Ljc5IDEzLjQ0IDEyLjUxIDEzLjQ0czEyLjUxLTUuNTUgMTIuNTEtMTMuNDR6Ii8+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTIwOS43NSAyNi4zNHYzOS44MmMwIDE2LjM4LTkuNjYgMjMuMDctMjEuMDggMjMuMDctMTAuNzUgMC0xNy4yMi03LjE5LTE5LjY2LTEzLjA3bDguNDgtMy41M2MxLjUxIDMuNjEgNS4yMSA3Ljg3IDExLjE3IDcuODcgNy4zMSAwIDExLjg0LTQuNTEgMTEuODQtMTN2LTMuMTloLS4zNGMtMi4xOCAyLjY5LTYuMzggNS4wNC0xMS42OCA1LjA0LTExLjA5IDAtMjEuMjUtOS42Ni0yMS4yNS0yMi4wOSAwLTEyLjUyIDEwLjE2LTIyLjI2IDIxLjI1LTIyLjI2IDUuMjkgMCA5LjQ5IDIuMzUgMTEuNjggNC45NmguMzR2LTMuNjFoOS4yNXptLTguNTYgMjAuOTJjMC03LjgxLTUuMjEtMTMuNTItMTEuODQtMTMuNTItNi43MiAwLTEyLjM1IDUuNzEtMTIuMzUgMTMuNTIgMCA3LjczIDUuNjMgMTMuMzYgMTIuMzUgMTMuMzYgNi42MyAwIDExLjg0LTUuNjMgMTEuODQtMTMuMzZ6Ii8+PHBhdGggZmlsbD0iIzM0QTg1MyIgZD0iTTIyNSAzdjY1aC05LjVWM2g5LjV6Ii8+PHBhdGggZmlsbD0iI0VBNDMzNSIgZD0iTTI2Mi4wMiA1NC40OGw3LjU2IDUuMDRjLTIuNDQgMy42MS04LjMyIDkuODMtMTguNDggOS44My0xMi42IDAtMjIuMDEtOS43NC0yMi4wMS0yMi4xOCAwLTEzLjE5IDkuNDktMjIuMTggMjAuOTItMjIuMTggMTEuNTEgMCAxNy4xNCA5LjE2IDE4Ljk4IDE0LjExbDEuMDEgMi41Mi0yOS42NSAxMi4yOGMyLjI3IDQuNDUgNS44IDYuNzIgMTAuNzUgNi43MiA0Ljk2IDAgOC40LTIuNDQgMTAuOTItNi4xNHptLTIzLjI3LTcuOThsMTkuODItOC4yM2MtMS4wOS0yLjc3LTQuMzctNC43LTguMjMtNC43LTQuOTUgMC0xMS44NCA0LjM3LTExLjU5IDEyLjkzeiIvPjxwYXRoIGZpbGw9IiM0Mjg1RjQiIGQ9Ik0zNS4yOSA0MS40MVYzMkg2N2MuMzEgMS42NC40NyAzLjU4LjQ3IDUuNjggMCA3LjA2LTEuOTMgMTUuNzktOC4xNSAyMi4wMS02LjA1IDYuMy0xMy43OCA5LjY2LTI0LjAyIDkuNjZDMTYuMzIgNjkuMzUuMzYgNTMuODkuMzYgMzQuOTEuMzYgMTUuOTMgMTYuMzIuNDcgMzUuMy40N2MxMC41IDAgMTcuOTggNC4xMiAyMy42IDkuNDlsLTYuNjQgNi42NGMtNC4wMy0zLjc4LTkuNDktNi43Mi0xNi45Ny02LjcyLTEzLjg2IDAtMjQuNyAxMS4xNy0yNC43IDI1LjAzIDAgMTMuODYgMTAuODQgMjUuMDMgMjQuNyAyNS4wMyA4Ljk5IDAgMTQuMTEtMy42MSAxNy4zOS02Ljg5IDIuNjYtMi42NiA0LjQxLTYuNDYgNS4xLTExLjY1bC0yMi40OS4wMXoiLz48L3N2Zz4=);
+        margin: 0 auto;
+      }
+      .search {
+        text-align: center;
+      }
+      .s-input {
+        border: 0;
+        outline: 0;
+        font-size: 14px;
+        width: 400px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 26px;
+        padding: 10px;
+      }
+      .shuqian-cont {
+        max-width: 1000px;
+        margin: 0 auto;
+        margin-top: 20px;
+      }
+      .group-t {
+        font-size: 14px;
+        color: #333;
+        text-align: center;
+      }
+      .one-grop-content {
+        padding-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        right: -30px;
+      }
+      .a-wrap {
+        align-items: center;
+        border: 1px solid #dddddd;
+        line-height: 30px;
+        vertical-align: middle;
+        height: 30px;
+        display: inline-block;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 15px;
+        margin-right: 15px;
+        margin-bottom: 12px;
+        user-select: none;
+        position: relative;
+      }
+      .a-wrap img {
+        display: inline-block;
+      }
+      .a-wrap span {
+        display: inline-block;
+      }
+      a:active {
+        color: #333;
+      }
+      a:checked,
+      a:visited {
+        color: #333;
+      }
+      a:hover {
+        text-decoration: none;
+        background-color: #eee;
+      }
+      .more-link:hover {
+        cursor: pointer;
+      }
+      .add-link {
+        border: 0;
+        display: flex;
+      }
+      .add-link input {
+        border: 0;
+        display: inline-block;
+        vertical-align: middle;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 3px;
+        outline: 0;
+      }
+      .tianjia-btn {
+        background-color: azure;
+        outline: 0;
+      }
+      [v-cloak] {
+        display: none;
+      }
+      .delete-l {
+        background-image: url(https://i.loli.net/2020/06/11/BgbfxFv7y6oecIk.png);
+        background-size: 100% 100%;
+        position: absolute;
+        right: -3px;
+        height: 16px;
+        width: 16px;
+        top: -6px;
+        display: none;
+      }
+      .edit-l {
+        background-image: url(https://i.loli.net/2020/06/11/uz1SYth4d5f2JUP.png);
+        background-size: 100% 100%;
+        position: absolute;
+        left: -6px;
+        height: 18px;
+        width: 18px;
+        top: -6px;
+        display: none;
+      }
+      .a-wrap:hover .delete-l {
+        display: block;
+      }
+      .a-wrap:hover .edit-l {
+        display: block;
+      }
+      .close-add {
+        background-image: url(https://i.loli.net/2020/06/11/BgbfxFv7y6oecIk.png);
+        width: 20px;
+        height: 20px;
+        background-size: 100%;
+        margin-left: 20px;
+        cursor: pointer;
+      }
+      .md-icon {
+        position: relative;
+        top: -2px;
+      }
+      .edit-group-name {
+        background-image: url(https://i.loli.net/2020/06/11/uz1SYth4d5f2JUP.png);
+        background-size: 100% 100%;
+        position: absolute;
+        height: 18px;
+        width: 18px;
+        right: -8px;
+        top: 16px;
+        display: none;
+        cursor: pointer;
+      }
+      .delete-group {
+        background-image: url(https://i.loli.net/2020/06/11/BgbfxFv7y6oecIk.png);
+        background-size: 100% 100%;
+        position: absolute;
+        height: 18px;
+        width: 18px;
+        right: -34px;
+        top: 16px;
+        display: none;
+        cursor: pointer;
+      }
+
+      .group-t:hover .edit-group-name {
+        display: block;
+      }
+      .group-t:hover .delete-group {
+        display: block;
+      }
+      button {
+        cursor: pointer;
+      }
+      .add-gruopbtn {
+        border: 0;
+        background-color: #fff;
+        color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height: 80px;"></div>
+    <div class="logo"></div>
+    <!-- Search Google -->
+    <center>
+      <form method="get" action="http://www.google.com/search">
+        <table bgcolor="#FFFFFF">
+          <tr>
+            <td>
+              <input
+                class="s-input"
+                type="text"
+                name="q"
+                size="31"
+                maxlength="255"
+                value=""
+                placeholder="Google search"
+              />
+              <input type="hidden" name="ie" value="utf-8" />
+              <input type="hidden" name="oe" value="utf-8" />
+              <input type="hidden" name="hl" value="zh-CN" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </center>
+    <!-- Search Google -->
+    <div id="app">
+      <div class="shuqian-cont" v-for="group,gindex in list" v-cloak>
+        <div class="group-t">
+          <span
+            style="
+              padding: 15px;
+              position: relative;
+              display: inline-block;
+              letter-spacing: 2px;
+              color: #333;
+              font-weight: bold;
+            "
+            >{{group.group_name}}
+            <div
+              v-show="editGroupNameIndex===-1"
+              class="edit-group-name"
+              @click.prevent="showEditGroupName(gindex)"
+            ></div>
+            <div
+              v-show="editGroupNameIndex===-1&&gindex!==0"
+              class="delete-group"
+              @click.prevent="deleteGroup(gindex)"
+            ></div>
+            <!-- 修改group name -->
+            <div
+              class="a-wrap add-link"
+              style="margin: 20px; display: none;"
+              v-show="editGroupNameIndex === gindex"
+            >
+              <input
+                v-model="newGroupName"
+                style="margin-left: 20px;"
+                placeholder="new group name"
+              />
+              <button class="tianjia-btn" @click="saveNewGroupName">
+                EDIt GROUP NAME
+              </button>
+              <div class="close-add" @click="closeShowEditGroupName"></div>
+            </div>
+            <!-- 修改group name 结束 -->
+          </span>
+        </div>
+        <div class="one-grop-content">
+          <div v-for="(l,index) in group.link_list">
+            <a class="a-wrap" :href="l.link">
+              <img
+                style="width: 16px; height: 16px;"
+                class="md-icon"
+                title=""
+                alt=""
+                :src="'https://www.google.com/s2/favicons?domain='+l.link"
+              />
+              <span style="margin-left: 5px;" v-text="l.desc"></span>
+              <div
+                class="delete-l"
+                @click.prevent="deleteLink(gindex,index)"
+              ></div>
+              <div
+                class="edit-l"
+                @click.prevent="toeditLink(gindex,index,l.link,l.desc)"
+              ></div>
+            </a>
+            <!-- 修改form -->
+            <div
+              class="a-wrap add-link"
+              v-show="editGi===gindex&&editlI===index"
+            >
+              <input v-model="editLink" placeholder="link" />
+              <input
+                v-model="editDesc"
+                style="margin-left: 20px;"
+                placeholder="describe"
+              />
+              <button class="tianjia-btn" @click="saveEditLink">EDIt</button>
+              <div class="close-add" @click="closeEdit"></div>
+            </div>
+            <!-- 修改form结束 -->
+          </div>
+          <!-- 添加按钮 -->
+          <div
+            class="a-wrap more-link"
+            :style="addShow===gindex?'background:#eee':''"
+          >
+            <div @click="showAdd(gindex)">+ add</div>
+          </div>
+          <!-- 添加按钮结束 -->
+          <!-- 增加form -->
+          <div class="a-wrap add-link" v-show="addShow === gindex">
+            <input v-model="group.add_link" placeholder="链接" />
+            <input
+              v-model="group.add_desc"
+              style="margin-left: 20px;"
+              placeholder="描述"
+            />
+            <button class="tianjia-btn" @click="addLink(gindex)">ADD</button>
+            <div class="close-add" @click="closeAdd"></div>
+          </div>
+          <!-- 增加form 结束 -->
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px; height: 100px;">
+        <button class="tianjia-btn add-gruopbtn" @click="addGroup">
+          ADD GROUP
+        </button>
+      </div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          list: [],
+          addShow: -1,
+          editGi: -1,
+          editlI: -1,
+          editLink: "",
+          editDesc: "",
+          editGroupNameIndex: -1,
+          newGroupName: "",
+        },
+        methods: {
+          showAdd: function (i) {
+            if (i !== this.addShow) {
+              //关闭修改
+              this.closeEdit();
+
+              this.addShow = i;
+            } else {
+              this.addShow = -1;
+            }
+          },
+          addLink: function (i) {
+            let addDesc = this.list[i].add_desc;
+            let addLink = this.list[i].add_link;
+            this.list[i].link_list.push({ link: addLink, desc: addDesc });
+            this.list[i].add_desc = "";
+            this.list[i].add_link = "";
+            this.addShow = -1;
+            this.saveStorage();
+          },
+          deleteLink: function (gI, lI) {
+            let that = this;
+            this.list[gI].link_list.splice(lI, 1);
+            this.saveStorage();
+          },
+          saveStorage: function () {
+            let that = this;
+            setTimeout(function () {
+              localStorage.setItem("_my_nav_", JSON.stringify(that.list));
+            }, 100);
+          },
+          closeAdd: function () {
+            this.addShow = -1;
+          },
+          toeditLink: function (gI, lI, link, desc) {
+            // 关闭新增
+            this.closeAdd();
+
+            this.editGi = gI;
+            this.editlI = lI;
+            this.editLink = link;
+            this.editDesc = desc;
+          },
+          closeEdit: function () {
+            this.editGi = -1;
+            this.editlI = -1;
+          },
+          saveEditLink: function () {
+            this.list[this.editGi].link_list[this.editlI].link = this.editLink;
+            this.list[this.editGi].link_list[this.editlI].desc = this.editDesc;
+            this.saveStorage();
+            this.closeEdit();
+          },
+          showEditGroupName: function (groupIndex) {
+            this.editGroupNameIndex = groupIndex;
+          },
+          closeShowEditGroupName: function () {
+            this.editGroupNameIndex = -1;
+          },
+          saveNewGroupName: function () {
+            this.list[this.editGroupNameIndex].group_name = this.newGroupName;
+            this.saveStorage();
+            this.closeShowEditGroupName();
+          },
+          deleteGroup: function (gindex) {
+            if (this.list[gindex].link_list.length === 0) {
+              this.list.splice(gindex, 1);
+              this.saveStorage();
+            } else {
+              var r = confirm(
+                "Deleting a group will remove all links in the group"
+              );
+              if (r == true) {
+                this.list.splice(gindex, 1);
+                this.saveStorage();
+              } else {
+              }
+            }
+          },
+          addGroup: function () {
+            this.list.push({
+              group_name: "new group" + (this.list.length + 1),
+              add_desc: "",
+              add_link: "",
+              link_list: [],
+            });
+            this.saveStorage();
+          },
+        },
+      });
+      let data = JSON.parse(localStorage.getItem("_my_nav_"));
+      if (data) {
+        app.list = data;
+      } else {
+        app.list = [
+          {
+            group_name: "gitmemory",
+            add_desc: "",
+            add_link: "",
+            link_list: [
+              {
+                link: "https://www.gitmemory.com/",
+                desc: "The baidu",
+              },
+            ],
+          },
+        ];
+      }
+    </script>
+  </body>
+</html>
