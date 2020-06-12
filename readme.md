@@ -12,9 +12,17 @@ You are completely free to configure it.
 
 ---
 
-> Use New Tab Redirect to Redirect the New Tab to your navigation page
+***(Super recommended)***
 
-https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna
+> Use New Tab Redirect to Redirect the New Tab to your navigation page 
+
+https://chrome.google.com/webstore/detail/fast-new-tab-redirect/ohnfdmfkceojnmepofncbddpdicdjcoi
+
+---
+
+>Run the webpage locally
+
+https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb
 
 ---
 
@@ -26,4 +34,4 @@ You can build your own
 
 ### To support me
 
-![](https://i.loli.net/2020/06/12/cUMEz6JyisDWbAq.png)
+<img src="https://i.loli.net/2020/06/12/cUMEz6JyisDWbAq.png" width="200" />
