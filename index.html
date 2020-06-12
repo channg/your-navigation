@@ -34,7 +34,7 @@
         color: #333;
         font-size: 12px;
         margin-top: 5px;
-        font-family: "SimSun", "宋体", "Arial Narrow";
+        font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
       }
 
       ul,
@@ -256,6 +256,7 @@
                 maxlength="255"
                 value=""
                 placeholder="Google search"
+                id="inputTxt"
               />
               <input type="hidden" name="ie" value="utf-8" />
               <input type="hidden" name="oe" value="utf-8" />
@@ -481,18 +482,25 @@
       } else {
         app.list = [
           {
-            group_name: "gitmemory",
+            group_name: "default group",
             add_desc: "",
             add_link: "",
             link_list: [
               {
                 link: "https://www.gitmemory.com/",
-                desc: "The baidu",
+                desc: "gitmemory",
               },
             ],
           },
         ];
       }
+      document.addEventListener("visibilitychange", function () {
+        let data = JSON.parse(localStorage.getItem("_my_nav_"));
+        if (data) {
+          app.list = data;
+        }
+      });
+      document.getElementById('inputTxt').focus()
     </script>
   </body>
 </html>
