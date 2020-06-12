@@ -430,6 +430,10 @@
             let that = this;
             setTimeout(function () {
               localStorage.setItem("_my_nav_", JSON.stringify(that.list));
+              window.postMessage(
+                { name: "_send_my_nav_", data: JSON.stringify(that.list) },
+                "*"
+              );
             }, 100);
           },
           closeAdd: function () {
@@ -516,6 +520,22 @@
         }
       });
       document.getElementById("inputTxt").focus();
+      // 从chrome插件中获取
+      window.addEventListener(
+        "message",
+        function (event) {
+          if (event.data.name === "_e_send_my_nav_") {
+            console.log(event.data);
+            try {
+              let data = JSON.parse(event.data.data);
+              if (data) {
+                app.list = data;
+              }
+            } catch (e) {}
+          }
+        },
+        false
+      );
     </script>
   </body>
 </html>
