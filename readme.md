@@ -12,7 +12,7 @@ You are completely free to configure it.
 
 ---
 
-***(Super recommended)**
+***(Super recommended)***
 
 > Use New Tab Redirect to Redirect the New Tab to your navigation page 
 
