@@ -12,9 +12,11 @@ You are completely free to configure it.
 
 ---
 
-> Use New Tab Redirect to Redirect the New Tab to your navigation page
+***(Super recommended)**
 
-https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna
+> Use New Tab Redirect to Redirect the New Tab to your navigation page 
+
+https://chrome.google.com/webstore/detail/fast-new-tab-redirect/ohnfdmfkceojnmepofncbddpdicdjcoi
 
 ---
 
