@@ -14,15 +14,9 @@ You are completely free to configure it.
 
 ***(Super recommended)***
 
-> Use New Tab Redirect to Redirect the New Tab to your navigation page 
+> Use the Chrome plugin to sync your bookmarks
 
-https://chrome.google.com/webstore/detail/fast-new-tab-redirect/ohnfdmfkceojnmepofncbddpdicdjcoi
-
----
-
->Run the webpage locally
-
-https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb
+https://chrome.google.com/webstore/detail/new-tab-navigation/dahpcbimcligpmaffmaihcplfcejmgoi/related?hl=zh-CN&authuser=0
 
 ---
 
